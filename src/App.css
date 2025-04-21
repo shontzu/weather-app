@@ -1,0 +1,106 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap");
+
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main App base styles */
+.App {
+  min-height: 100vh;
+  width: 100vw;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Montserrat", Arial, sans-serif;
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+}
+
+/* ---- Light theme ---- */
+.App.light {
+  background-image: url("./Assets/bg-light.png");
+  color: #2a2253;
+}
+.App.light .app-header {
+  background: transparent;
+}
+.App.light .country-input {
+  background: #ede3ff;
+  color: #3d3363;
+}
+.App.light .search-button {
+  background: #7249c6;
+  color: #fff;
+}
+.App.light .search-button:hover {
+  background: #513285;
+}
+.App.light .weather-card {
+  background: rgba(255, 255, 255, 0.35);
+  color: #2a2253;
+  box-shadow: 0 10px 30px 0 rgba(100, 54, 183, 0.17);
+}
+.App.light .history-item {
+  background: rgba(255, 255, 255, 0.53);
+  color: #2a2253;
+}
+.App.light .icon-btn {
+  color: #886dbe;
+}
+.App.light .icon-btn:hover {
+  background: #efe2ff;
+  color: #5b427e;
+}
+.App.light .theme-toggle {
+  background: #f1eeff;
+  color: #57438d;
+  border: 1px solid #e9d1ff;
+}
+
+/* ---- Dark theme ---- */
+.App.dark {
+  background-image: url("./Assets/bg-dark.png");
+  color: #e4dffd;
+}
+.App.dark .app-header {
+  background: transparent;
+}
+.App.dark .country-input {
+  background: #2c2342;
+  color: #f1eaff;
+}
+.App.dark .input-label {
+  color: #bcb4e3;
+}
+.App.dark .search-button {
+  background: #8360cf;
+  color: #fff;
+}
+.App.dark .search-button:hover {
+  background: #5d4693;
+}
+.App.dark .weather-card {
+  background: rgba(47, 36, 65, 0.54);
+  color: #e4dffd;
+  box-shadow: 0 8px 38px -2px rgba(27, 14, 51, 0.18);
+}
+.App.dark .history-item {
+  background: rgba(81, 72, 113, 0.4);
+  color: #efe6ff;
+}
+.App.dark .icon-btn {
+  color: #cebffc;
+}
+.App.dark .icon-btn:hover {
+  background: #493871;
+  color: #fff;
+}
+.App.dark .theme-toggle {
+  background: #322257;
+  color: #fbefff;
+  border: 1px solid #8e6ae0;
+}
