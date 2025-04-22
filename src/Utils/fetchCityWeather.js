@@ -29,7 +29,7 @@ export async function fetchCityWeather(cityQuery) {
     return {
       weather: null,
       newItem: null,
-      error: "Could not fetch weather data.",
+      error: "Enter a city to get weather",
     };
   }
 }

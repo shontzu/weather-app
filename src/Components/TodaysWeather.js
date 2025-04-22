@@ -3,8 +3,6 @@ import React from "react";
 const TodaysWeather = ({ loading, error, weather }) => {
   if (loading) return <div className="weather-main">Loading...</div>;
   if (error) return <div className="weather-main">{error}</div>;
-  if (!weather)
-    return <div className="weather-main">Enter a city to get weather.</div>;
 
   let temp, tempMin, tempMax, humidity, clouds, city, date, weatherText, icon;
   if (weather) {
