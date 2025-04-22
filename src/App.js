@@ -63,9 +63,8 @@ function App() {
         <div className="weather-card">
           <TodaysWeather loading={loading} error={error} weather={weather} />
 
-          <div className="search-history-title">Search History</div>
-
           <div className="search-history">
+            <div className="search-history-title">Search History</div>
             {!searchHistory.length ? (
               <img
                 src={noSearchHistoryIcon}

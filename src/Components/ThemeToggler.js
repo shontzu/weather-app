@@ -7,7 +7,7 @@ const ThemeToggler = ({ theme, onToggle }) => {
       onClick={onToggle}
       aria-label="Toggle Theme"
     >
-      {theme === "light" ? "🌙 Switch to Dark Mode" : "🌞 Switch to Light Mode"}
+      {theme === "light" ? "🌙 Go Dark" : "🌞 Go Light"}
     </button>
   );
 };
