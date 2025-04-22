@@ -45,7 +45,7 @@
   width: 100vw;
   justify-content: center;
   align-items: flex-start;
-  margin-top: 25px;
+  margin-top: 100px;
 }
 
 .weather-card {
@@ -57,6 +57,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  position: relative;
 }
 .weather-header {
   font-size: 22px;
@@ -81,7 +82,7 @@
 .weather-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   margin-top: 10px;
   font-size: 17px;
   font-weight: 500;
@@ -112,10 +113,12 @@
 }
 
 .weather-icon {
-  height: 110px;
-  width: 140px;
-  margin-top: -30px;
-  margin-right: -40px;
+  height: 310px;
+  width: 340px;
+  position: absolute;
+  top: -200px;
+  right: -80px;
+  z-index: 999;
   filter: drop-shadow(0 7px 24px #f7e66888);
 }
 
