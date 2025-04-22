@@ -10,6 +10,12 @@ html,
   --container-width: 650px;
 }
 
+.App {
+  min-height: 100vh;
+  width: 100vw;
+  padding: 20px 0px;
+}
+
 .app-header,
 .search-bar,
 .weather-card {
