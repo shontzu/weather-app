@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
+import SearchBar from "./Components/SearchBar";
+import TodaysWeather from "./Components/TodaysWeather";
+import HistoryItem from "./Components/HistoryItem";
+import ThemeToggler from "./Components/ThemeToggler";
+
 import { fetchGeocoding } from "./Utils/FetchGeocoding";
 import { fetchWeatherData } from "./Utils/FetchWeatherData";
 
@@ -91,93 +96,49 @@ function App() {
 
   return (
     <div className={`App ${theme}`}>
-      <header className="app-header">
-        <form className="search-bar" onSubmit={handleSearch}>
-          <input
-            className="country-input"
-            placeholder="Country or City,CountryCode"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            type="text"
-          />
-          <button className="search-button" type="submit">
-            🔍
-          </button>
-        </form>
-      </header>
+      <SearchBar
+        query={query}
+        setQuery={setQuery}
+        handleSearch={handleSearch}
+      />
 
       <main className="main-content">
         <div className="weather-card">
-          {loading ? (
-            <div className="weather-main">Loading...</div>
-          ) : error ? (
-            <div className="weather-main">{error}</div>
-          ) : weather ? (
-            <div className="weather-main">
-              <div>
-                <div className="weather-header">Today's Weather</div>
-                <div className="weather-info">{temp}°</div>
-                <div className="weather-small">
-                  <span>
-                    H: {tempMax}° L: {tempMin}°
-                  </span>
-                </div>
-                <div className="weather-meta">
-                  <span className="city">{city}</span>
-                  <span className="date">{date}</span>
-                  <span className="humidity">Humidity: {humidity}%</span>
-                  <span className="clouds">{clouds}</span>
-                </div>
-              </div>
-              <img src={icon} alt={weatherText} className="weather-icon" />
-            </div>
-          ) : (
-            <div className="weather-main">Enter a city to get weather.</div>
-          )}
+          <TodaysWeather
+            loading={loading}
+            error={error}
+            weather={weather}
+            temp={temp}
+            tempMax={tempMax}
+            tempMin={tempMin}
+            humidity={humidity}
+            clouds={clouds}
+            city={city}
+            date={date}
+            weatherText={weatherText}
+            icon={icon}
+          />
 
           <div className="search-history-title">Search History</div>
+
           <div className="search-history">
             {searchHistory.map((item, idx) => (
-              <div className="history-item" key={idx}>
-                <div className="history-info">
-                  <span className="history-city">{item.city}</span>
-                  <span className="history-date">{item.date}</span>
-                </div>
-                <div>
-                  <button
-                    className="icon-btn"
-                    type="button"
-                    onClick={() => handleHistorySearch(item)}
-                  >
-                    <span role="img" aria-label="search">
-                      🔍
-                    </span>
-                  </button>
-                  <button
-                    className="icon-btn"
-                    type="button"
-                    onClick={() => handleDeleteHistory(idx)}
-                  >
-                    <span role="img" aria-label="delete">
-                      🗑️
-                    </span>
-                  </button>
-                </div>
-              </div>
+              <HistoryItem
+                key={idx}
+                item={item}
+                idx={idx}
+                onSearch={handleHistorySearch}
+                onDelete={handleDeleteHistory}
+              />
             ))}
           </div>
         </div>
       </main>
 
-      <button
-        className="theme-toggle"
-        onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        aria-label="Toggle Theme"
-      >
-        {theme === "light"
-          ? "🌙 Switch to Dark Mode"
-          : "🌞 Switch to Light Mode"}
-      </button>
+      <ThemeToggler
+        theme={theme}
+        onToggle={() => setTheme(theme === "light" ? "dark" : "light")}
+      />
     </div>
   );
 }
