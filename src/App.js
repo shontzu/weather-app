@@ -1,6 +1,25 @@
 import { useState } from "react";
 import "./App.css";
 import cloudImg from "./Assets/cloud.png";
+import sunImg from "./Assets/sun.png";
+
+import { fetchGeocoding } from "./Utils/FetchGeocoding";
+import { fetchWeatherData } from "./Utils/FetchWeatherData";
+
+async function getWeatherForCity(cityName) {
+  // Get coordinates for city
+  const locations = await fetchGeocoding(cityName, 1);
+  if (locations.length === 0) throw new Error("City not found");
+  const { lat, lon } = locations[0];
+
+  // Get weather using coordinates
+  const weather = await fetchWeatherData(lat, lon);
+  return weather;
+}
+
+getWeatherForCity("London,GB")
+  .then((weather) => console.log(weather))
+  .catch((err) => console.error(err));
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -16,7 +35,7 @@ function App() {
   return (
     <div className={`App ${theme}`}>
       <div className="search-bar">
-        <input className="country-input" placeholder="Singa" type="text" />
+        <input className="country-input" placeholder="Country" type="text" />
         <button className="search-button">🔍</button>
       </div>
 
@@ -36,7 +55,7 @@ function App() {
                 <span className="clouds">Clouds</span>
               </div>
             </div>
-            <img src={cloudImg} alt="" className="weather-icon" />
+            <img src={cloudImg} alt="cloud" className="weather-icon" />
           </div>
 
           <div className="search-history-title">Search History</div>
