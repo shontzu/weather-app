@@ -10,7 +10,9 @@ import noSearchHistoryIcon from "./Assets/no-search-history.svg";
 import { fetchCityWeather } from "./Utils/fetchCityWeather";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "light";
+  });
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -36,6 +38,10 @@ function App() {
     loadWeather(query);
     // eslint-disable-next-line
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   function handleSearch(e) {
     e.preventDefault();
