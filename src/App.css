@@ -53,6 +53,10 @@ html,
 /* ---- Light theme ---- */
 .App.light {
   background-image: url("./Assets/bg-light.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
   color: #2a2253;
 }
 .App.light .app-header {
@@ -103,6 +107,10 @@ html,
 /* ---- Dark theme ---- */
 .App.dark {
   background-image: url("./Assets/bg-dark.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: #e4dffd;
 }
 .App.dark .app-header {
