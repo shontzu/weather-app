@@ -1,20 +1,12 @@
 import { useState, useEffect } from "react";
-import "./App.css";
 
 import SearchBar from "./Components/SearchBar";
 import TodaysWeather from "./Components/TodaysWeather";
 import HistoryItem from "./Components/HistoryItem";
 import ThemeToggler from "./Components/ThemeToggler";
+import initialSearchHistory from "./Mocks/mockData.json";
 
 import { fetchCityWeather } from "./Utils/fetchCityWeather";
-
-const initialSearchHistory = [
-  { city: "Johor, MY", date: "01-09-2022 09:41am" },
-  { city: "Osaka, JP", date: "01-09-2022 09:41am" },
-  { city: "Seoul, KR", date: "01-09-2022 09:41am" },
-  { city: "Tokusan-ri, KR", date: "01-09-2022 09:41am" },
-  { city: "Taipei, TW", date: "01-09-2022 09:41am" },
-];
 
 function App() {
   const [theme, setTheme] = useState("light");
