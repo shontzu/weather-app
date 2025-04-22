@@ -1,6 +1,6 @@
 import React from "react";
 
-const HistoryItem = ({ item, idx, onSearch, onDelete }) => {
+const HistoryListItem = ({ item, idx, onSearch, onDelete }) => {
   return (
     <div className="history-item">
       <div className="history-info">
@@ -31,4 +31,4 @@ const HistoryItem = ({ item, idx, onSearch, onDelete }) => {
   );
 };
 
-export default HistoryItem;
+export default HistoryListItem;

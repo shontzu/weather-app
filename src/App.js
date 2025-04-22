@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import SearchBar from "./Components/SearchBar";
 import TodaysWeather from "./Components/TodaysWeather";
-import HistoryItem from "./Components/HistoryItem";
+import HistoryList from "./Components/HistoryList";
 import ThemeToggler from "./Components/ThemeToggler";
 import initialSearchHistory from "./Mocks/mockData.json";
 import noSearchHistoryIcon from "./Assets/no-search-history.svg";
@@ -62,27 +62,12 @@ function App() {
       <main className="main-content">
         <div className="weather-card">
           <TodaysWeather loading={loading} error={error} weather={weather} />
-
-          <div className="search-history">
-            <div className="search-history-title">Search History</div>
-            {!searchHistory.length ? (
-              <img
-                src={noSearchHistoryIcon}
-                alt="No search history"
-                style={{ height: 100 }}
-              />
-            ) : (
-              searchHistory.map((item, idx) => (
-                <HistoryItem
-                  key={idx}
-                  item={item}
-                  idx={idx}
-                  onSearch={handleHistorySearch}
-                  onDelete={handleDeleteHistory}
-                />
-              ))
-            )}
-          </div>
+          <HistoryList
+            searchHistory={searchHistory}
+            noSearchHistoryIcon={noSearchHistoryIcon}
+            onSearch={handleHistorySearch}
+            onDelete={handleDeleteHistory}
+          />
         </div>
       </main>
 
