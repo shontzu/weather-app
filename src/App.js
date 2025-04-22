@@ -5,6 +5,7 @@ import TodaysWeather from "./Components/TodaysWeather";
 import HistoryItem from "./Components/HistoryItem";
 import ThemeToggler from "./Components/ThemeToggler";
 import initialSearchHistory from "./Mocks/mockData.json";
+import noSearchHistoryIcon from "./Assets/no-search-history.svg";
 
 import { fetchCityWeather } from "./Utils/fetchCityWeather";
 
@@ -65,15 +66,23 @@ function App() {
           <div className="search-history-title">Search History</div>
 
           <div className="search-history">
-            {searchHistory.map((item, idx) => (
-              <HistoryItem
-                key={idx}
-                item={item}
-                idx={idx}
-                onSearch={handleHistorySearch}
-                onDelete={handleDeleteHistory}
+            {!searchHistory.length ? (
+              <img
+                src={noSearchHistoryIcon}
+                alt="No search history"
+                style={{ height: 100 }}
               />
-            ))}
+            ) : (
+              searchHistory.map((item, idx) => (
+                <HistoryItem
+                  key={idx}
+                  item={item}
+                  idx={idx}
+                  onSearch={handleHistorySearch}
+                  onDelete={handleDeleteHistory}
+                />
+              ))
+            )}
           </div>
         </div>
       </main>
