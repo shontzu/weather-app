@@ -1,12 +1,8 @@
 import React from "react";
 import HistoryListItem from "./HistoryListItem";
+import noSearchHistoryIcon from "./Assets/no-search-history.svg";
 
-const HistoryList = ({
-  searchHistory,
-  noSearchHistoryIcon,
-  onSearch,
-  onDelete,
-}) => (
+const HistoryList = ({ searchHistory, onSearch, onDelete }) => (
   <div className="search-history">
     <div className="search-history-title">Search History</div>
     {!searchHistory.length ? (

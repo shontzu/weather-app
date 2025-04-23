@@ -5,7 +5,6 @@ import TodaysWeather from "./Components/TodaysWeather";
 import HistoryList from "./Components/HistoryList";
 import ThemeToggler from "./Components/ThemeToggler";
 import initialSearchHistory from "./Mocks/mockData.json";
-import noSearchHistoryIcon from "./Assets/no-search-history.svg";
 
 import { fetchCityWeather } from "./Utils/fetchCityWeather";
 
@@ -70,7 +69,6 @@ function App() {
           <TodaysWeather loading={loading} error={error} weather={weather} />
           <HistoryList
             searchHistory={searchHistory}
-            noSearchHistoryIcon={noSearchHistoryIcon}
             onSearch={handleHistorySearch}
             onDelete={handleDeleteHistory}
           />
