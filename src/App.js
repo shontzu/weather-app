@@ -16,7 +16,9 @@ function App() {
   const [weather, setWeather] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [searchHistory, setSearchHistory] = useState(initialSearchHistory);
+  const [searchHistory, setSearchHistory] = useState(
+    JSON.parse(localStorage.getItem("searchHistory")) || initialSearchHistory
+  );
 
   async function loadWeather(cityQuery) {
     setLoading(true);
@@ -41,6 +43,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem("theme", theme);
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+  }, [searchHistory]);
 
   function handleSearch(e) {
     e.preventDefault();
